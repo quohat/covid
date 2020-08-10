@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+	<head>
+    <title>QuoHat Covid-19</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css" integrity="sha384-VCmXjywReHh4PwowAiWNagnWcLhlEJLA5buUprzK8rxFgeH0kww/aWY76TfkUoSX" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style type="text/css">
+    *{margin:0;padding:0}h1{text-align:center;color:#2c98f0;font-family:'Sora',sans-serif;margin-top:8%}p{text-align:center;font-family:'Quicksand',sans-serif;margin-top:8px;color:#525252}a{color:#2c98f0;font-family:'Quicksand',sans-serif}@media all and (min-width: 320px){h1{margin-top:20%;font-size:20px}p{font-size:15px}button{margin-top:55px;height:50px;width:200px;background-color:#2c98f0;color:#fff;font-family:'Quicksand',sans-serif;font-size:15px;border:0;border-radius:6px}.material-icons{font-size:14px}.cre{font-size:12px;margin-top:22px}}@media all and (min-width: 1280px){h1{text-align:center;color:#2c98f0;margin-top:8%;font-family:'Sora',sans-serif;font-size:50px}p{text-align:center;margin-top:8px;color:#525252;font-size:19px;font-family:'Quicksand',sans-serif}button{margin-top:55px;height:80px;width:400px;background-color:#2c98f0;color:#fff;font-family:'Quicksand',sans-serif;font-size:30px;border:0;border-radius:6px}.material-icons{font-size:25px}.cre{font-size:14px;margin-top:22px}}
+    
+    @font-face{
+    font-family:'Heros-Bold';
+    src:url("texgyreheros-bold.otf");src:local("☺"),url("texgyreheros-bold.otf") format("otf"), url("texgyreheros-bold.otf") format("truetype"),url("texgyreheros-bold.otf") format("otf");
+    font-style:bold}
+    
+    h1 {
+	font-weight: 400;
+    font-family: 'Heros-Bold', sans-serif;
+    font-size: 50px;
+    line-height: 120%;
+    letter-spacing: -0.03em;
+    }
+    </style>
+<script type="text/javascript">
+if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+ function GetCookie(name) {
+  var arg=name+"=";
+  var alen=arg.length;
+  var clen=document.cookie.length;
+  var i=0;
+  while (i<clen) {
+	var j=i+alen;
+	if (document.cookie.substring(i,j)==arg)
+	  return "here";
+	i=document.cookie.indexOf(" ",i)+1;
+	if (i==0) break;
+  }
+  return null;
+}
+function testFirstCookie(){
+	var visit=GetCookie("FirstTimeVisitCookie");
+	if (visit==null){
+	   var expire=new Date();
+	   expire=new Date(expire.getTime()+7776000000);
+	   document.cookie="FirstTimeVisitCookie=here; expires="+expire + ";path=/";
+	   alert("Bật định vị sử dụng!")	// New visitor
+   }else{
+       console.log("Wellcome Back!")
+   }
+}
+
+	testFirstCookie();
+}
+
+function getLocation1() {
+  if (navigator.geolocation) {
+    var loading = `<br/><center><div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+  <span class="sr-only">Loading...</span>
+</div></center>`;
+document.getElementById('result3').innerHTML = loading;
+    navigator.geolocation.getCurrentPosition(getLocation);
+    console.log("Bước 1: Định vị thành công!")
+  } else { 
+    alert("Trình duyệt không hỗ trợ!");
+  }
+}
+
+function addData() {
+    const div = document.createElement('div');
+
+    div.className = 'row';
+
+    div.innerHTML = `
+<center>
+<div class="alert alert-danger" role="alert" style="width:95%;">
+  Có  <a href="#" class="alert-link"></a> điểm nóng về covid-19 cách bạn 3km. Hãy cẩn thận !
+</div>
+<table class="table" style="border-collapse:collapse; width:95%;">
+<thead class="bg-danger" style=" color:#fff; border:0;">
+<tr>
+<th scope="col">Khoảng cách</th>
+<th scope="col">Bệnh nhân</th>
+<th scope="col">Địa chỉ</th>
+<th scope="col">Ghi chú (lịch trình)</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+
+<div class="alert alert-warning" role="alert" style="width:95%;">
+  Có  <a href="#" class="alert-link"></a> điểm nóng về covid-19 cách bạn 10km. Hãy cẩn thận !
+</div>
+<table class="table" style="border-collapse:collapse; width:95%;">
+<thead class="bg-warning" style=" color:#fff; border:0;">
+<tr>
+<th scope="col">Khoảng cách</th>
+<th scope="col">Bệnh nhân</th>
+<th scope="col">Địa chỉ</th>
+<th scope="col">Ghi chú (lịch trình)</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+</center>
+  `;
+
+    document.getElementById('result1').appendChild(div);
+}
+
+function addSafe() {
+    const div1 = document.createElement('div');
+
+    div1.className = 'row1';
+
+    div1.innerHTML = `
+
+<div class="alert alert-success" role="alert">
+ An toàn! Không phát hiện bất kỳ điểm nóng về Covid-19 nào ổ gần bạn. 
+</div>
+
+<center><button onclick="tai_lai_trang()" style="background-color:#28a745;">Quay lại <span class="material-icons">replay</span></button></center>
+  `;
+
+    document.getElementById('result2').appendChild(div1);
+}
+
+function tai_lai_trang() {
+    location.reload();
+}
+
+
+function getLocation(position) {
+  
+    fetch('https://cors-anywhere.herokuapp.com/https://maps.vnpost.vn/apps/covid19/api/patientapi/list')
+        .then((response) => {
+            return response.json()
+        })
+        .then((data) => {
+            // Work with JSON data here
+            console.log(data);
+            console.log("Bước 2: Nạp dữ liệu thành công!")
+
+
+
+            //Tính khoảng cách
+            function getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2) {
+                var R = 6371; // Radius of the earth in km
+                var dLat = deg2rad(lat2 - lat1); // deg2rad below
+                var dLon = deg2rad(lon2 - lon1);
+                var a =
+                    Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                    Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) *
+                    Math.sin(dLon / 2) * Math.sin(dLon / 2);
+                var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+                var d = Math.ceil(R * c); // Distance in km
+                return d;
+
+            }
+
+            function deg2rad(deg) {
+                return deg * (Math.PI / 180)
+            }
+            // Kết thúc tính khoảng cách
+
+            obj = data.data;
+            var arrHere = Object.keys(obj).map((key) => [Number(key), obj[key]]);
+
+
+            addData();
+            for (items of arrHere) {
+                var hihi = getDistanceFromLatLonInKm(position.coords.latitude, position.coords.longitude, items[1].lat, items[1].lng)
+                if (hihi <= 10) {
+                    if (hihi <= 3) {
+                        var tr = document.createElement('TR');
+                        tr.innerHTML += '<td >' + hihi + 'km' + '</td><td>' + items[1].name + '</td><td>' + items[1].address + '</td><td>' + items[1].note + '</td>';
+                        document.getElementsByClassName('table')[0].appendChild(tr);
+                    } else {
+                        var tr1 = document.createElement('TR');
+                        tr1.innerHTML += '<td >' + hihi + 'km' + '</td><td>' + items[1].name + '</td><td>' + items[1].address + '</td><td>' + items[1].note + '</td>';
+                        document.getElementsByClassName('table')[1].appendChild(tr1);
+                    }
+
+
+                }
+
+            }
+            document.getElementById('result').remove();
+
+            var count1 = document.getElementsByTagName('tr').length;
+            if (count1 == 2) {
+                document.getElementById('result1').remove();
+                addSafe();
+                console.log("Bước 3: Thành công!");
+                console.log("Quohat Team with love <3");
+            } else {
+                document.getElementById('result3').remove();
+                document.getElementsByClassName("alert-link")[0].innerHTML = document.getElementsByTagName('table')[0].getElementsByTagName('tr').length - 1;
+                document.getElementsByClassName("alert-link")[1].innerHTML = document.getElementsByTagName('table')[1].getElementsByTagName('tr').length - 1;
+                console.log("Bước 3: Thành công!");
+                console.log("Quohat Team with love <3");
+            }
+
+
+
+        })
+
+        .catch((err) => {
+            alert("Không nạp được dữ liệu. Tại thằng Nhật chứ không phải tại Quốc!");
+            console.log("Liên Hệ : Quohat Team")
+        })
+
+}
+
+</script>
+
+	</head>
+<body>
+<h1>Quohat Covid-19</h1>
+<p>Nhấn nút để phát hiện các điểm nóng về Covid-19 đang ở gần bạn nhất | Nguồn dữ liệu: <a href="https://ncov.moh.gov.vn/">Bộ Y Tế</a></p>
+<div id="result1">
+   <div id="result3">
+    
+</div> 
+</div>
+<div id="result2" style="margin:0 auto;width:70%;"></div>
+<div id="result">
+<center><button onclick="getLocation1()">Nhấn nút <span class="material-icons">search</span></button></center>
+</div>
+<br/>
+<p class="cre">Phát triển bởi <a href="">Huỳnh Bá Quốc</a> & <a href="">Minh Nhật</a> | <a href="">QuoHat Team </a>with love <3</p>
+
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/js/bootstrap.min.js" integrity="sha384-XEerZL0cuoUbHE4nZReLT7nx9gQrQreJekYhJD9WNWhH8nEW+0c5qq7aIo2Wl30J" crossorigin="anonymous"></script>
+
+</body>
+</html>
