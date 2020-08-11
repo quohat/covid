@@ -144,8 +144,8 @@ function getLocation(position) {
 		addData();
 		for (items of arrHere) {
 			var hihi = getDistanceFromLatLonInKm(position.coords.latitude, position.coords.longitude, items[1].lat, items[1].lng)
-			if (hihi <= 100) {
-				if (hihi <= 35) {
+			if (hihi <= 10) {
+				if (hihi <= 3) {
 					var tr = document.createElement('TR');
 					tr.innerHTML += '<td >' + hihi + 'km' + '</td><td>' + items[1].name + '</td><td>' + items[1].address + '</td><td>' + items[1].note + '</td>';
 					document.getElementsByClassName('table')[0].getElementsByTagName('tbody')[0].appendChild(tr);
