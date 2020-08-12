@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html>
-	<head>
-   <!-- Primary Meta Tags -->
+<head>
 <title>QuoHat Covid-19</title>
-<meta name="title" content="QuoHat Covid-19">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
- <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="title" content="QuoHat Covid-19">
 <meta name="google-site-verification" content="sqmm7BgQeCmb63vtmp0RKBUT6cWOtfHlq3q6T9lbW_U" />
 <meta name="Description" CONTENT="Website cảnh báo các điểm nóng về Covid-19 ở gần bạn nhất!, Quohat covid, quohat covid, Quohat Covid-19, quohat team,">
 <!-- Open Graph / Facebook -->
@@ -20,7 +19,7 @@
 <meta property="twitter:url" content="https://quohat.github.io/covid/">
 <meta property="twitter:title" content="QuoHat Covid-19">
 <meta property="twitter:description" content="Website cảnh báo các điểm nóng về Covid-19 ở gần bạn nhất!">
-<meta property="twitter:image" content=https://raw.githubusercontent.com/quohat/covid/master/my-visual_48210861.png">	
+<meta property="twitter:image" content="https://raw.githubusercontent.com/quohat/covid/master/my-visual_48210861.png">
     <link rel="icon" href="icon.ico">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css" integrity="sha384-VCmXjywReHh4PwowAiWNagnWcLhlEJLA5buUprzK8rxFgeH0kww/aWY76TfkUoSX" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300&display=swap" rel="stylesheet">
@@ -123,7 +122,7 @@ function addSafe() {
 	div1.className = 'row1';
 	div1.innerHTML = `
 <div class="alert alert-success" role="alert">
- An toàn! Không phát hiện bất kỳ điểm nóng về Covid-19 nào ổ gần bạn. 
+ An toàn! Không phát hiện bất kỳ điểm nóng về Covid-19 nào ở gần bạn. 
 </div>
 <center><button onclick="tai_lai_trang()" style="background-color:#28a745;">Quay lại <span class="material-icons">replay</span></button></center>
   `;
@@ -135,11 +134,13 @@ function tai_lai_trang() {
 }
 
 function getLocation(position) {
-	fetch('https://cors-anywhere.herokuapp.com/https://maps.vnpost.vn/apps/covid19/api/patientapi/list').then((response) => {
+  
+  function Error(urlx){
+	fetch(urlx).then((response) => {
 		return response.json()
 	}).then((data) => {
 		// Work with JSON data here
-		console.log(data);
+    console.log(data);
 		console.log("Bước 2: Nạp dữ liệu thành công!")
 			//Tính khoảng cách
 		function getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2) {
@@ -202,11 +203,16 @@ function getLocation(position) {
 			console.log("Bước 3: Thành công!");
 			console.log("Quohat Team with love <3");
 		}
+    
+   
 		
 	}).catch((err) => {
-		alert("Không nạp được dữ liệu. Tại thằng Nhật chứ không phải tại Quốc!");
-		console.log("Liên Hệ : Quohat Team");
-	})
+    console.log("Xử lý lỗi...")
+    Error("https://secret-ocean-49799.herokuapp.com/https://maps.vnpost.vn/apps/covid19/api/patientapi/list");
+  })
+  }
+  Error("https://cors-anywhere.herokuapp.com/https://maps.vnpost.vn/apps/covid19/api/patientapi/list");
+
 }
 </script>
 </head>
