@@ -1,4 +1,4 @@
-# Quohat Covid-19 Zone
+# Quohat Covid-19 - Đã hết hạn sử dụng
 
 Phát hiện các điểm nóng về Covid-19 đang ở gần bạn nhất: https://quohat.github.io/covid
 
