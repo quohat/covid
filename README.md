@@ -1,6 +1,6 @@
 # Quohat Covid-19 
 
-Phát hiện các điểm nóng về Covid-19 đang ở gần bạn nhất:https://quohatcovid.glitch.me
+Phát hiện các điểm nóng về Covid-19 đang ở gần bạn nhất: https://quohatcovid.glitch.me
 
 #### Việt Nam quyết thắng đại dịch!
 
